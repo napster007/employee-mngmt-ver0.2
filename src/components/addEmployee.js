@@ -48,7 +48,8 @@ class AddEmployee extends Component {
       
     }
     app.auth().createUserWithEmailAndPassword(item.email,item.password).then(cred => {
-      console.log(cred);
+      console.log(cred.uid);
+
     });
     itemsRef.push(item);
     this.setState({
