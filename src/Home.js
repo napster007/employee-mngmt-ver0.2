@@ -11,11 +11,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import AddIcon from '@material-ui/icons/Add';
 import PeopleIcon from '@material-ui/icons/People';
 import AddEmployee from "./components/addEmployee";
 import EmployeeList from "./components/employeeList";
-import auth from './Authentication';
+import auth, { AuthContext } from './Authentication';
 import app from "./firebase.js";
 import render from 'react-dom';
 
@@ -23,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     backgroundColor: theme.palette.background.paper,
+
   },
   nav_menu:{
     width: '100%',
@@ -39,6 +43,23 @@ const useStyles = makeStyles((theme) => ({
     float: "right",
     marginLeft: theme.spacing(2),
   },
+  card_cont: {
+    height:"10%",
+    width:"30%",
+    margin:"0 auto",
+
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
 }));
 
  
@@ -51,7 +72,7 @@ export default function SelectedListItem() {
     setSelectedIndex(index);
   };
 
-
+  const bull = <span className={classes.bullet}>•</span>;
   return (
     <div className={classes.root}>
         <AppBar position="static" component="nav">
@@ -73,7 +94,7 @@ export default function SelectedListItem() {
                             <div> ${user.emal}</div>
                             `;
                           /*  console.log(user.uid); */
-                          window.myGlobalVariable = user.uid;
+                         /*  window.myGlobalVariable = user.uid; */
 
                           userDetails.innerHTML = "Welcome " + user.email;
                   } else {
@@ -94,6 +115,7 @@ export default function SelectedListItem() {
       
 
       </AppBar>
+     
       <Router>
       <List component="nav"  className={classes.nav_menu} >
         <ListItem
@@ -144,7 +166,21 @@ export default function SelectedListItem() {
       </List>
 
         <hr />
-
+        <Card className={classes.card_cont} variant="outlined">
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+            Welcome and Happy holidays
+            </Typography>
+            
+            <Typography className={classes.pos} color="textSecondary">
+              Click ADD EMPLOYEE to and new employee
+            </Typography>
+            <Typography variant="body2" component="p">
+            Click EMPLOYEE LIST to view and update certain user
+            
+            </Typography>
+          </CardContent>
+        </Card>
         {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path

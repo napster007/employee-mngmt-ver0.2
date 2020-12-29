@@ -14,6 +14,9 @@ import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -37,7 +40,8 @@ class EmployeesData extends Component {
     email: '',
     cpnum:'',
     address: '',
-    password:''
+    password:'',
+    utype:''
   };
 
   constructor(props) {
@@ -69,6 +73,7 @@ class EmployeesData extends Component {
       cpnum: data.cpnum,
       address: data.address,
       password:data.password,
+      utype:data.utype,
      
     };
 
@@ -91,10 +96,7 @@ class EmployeesData extends Component {
     e.preventDefault();
     const {item} = this.state;
     let key = this.props.match.params.id
-   
       EmployeeService.update(key, item);
-    
-
     this.props.history.push('/employee-list');
   };
 
@@ -141,13 +143,27 @@ class EmployeesData extends Component {
             />
              <Divider/>
              <InputLabel htmlFor="component-simple">Contact No.</InputLabel>
-              <Input required id="standard-required" label="Contact No." name="cpnum" onChange={this.handleChange}   value={item.cpnum } />
+              <Input required id="standard-required" label="Contact No." type="number" name="cpnum" onChange={this.handleChange}   value={item.cpnum } />
               <Divider/>
               <InputLabel htmlFor="component-simple">Address</InputLabel>
               <Input required id="standard-required" label="Address" name="address" onChange={this.handleChange} value={item.address} />
               <Divider/> 
+              <h4>User Type</h4>
+                   
+                   <Select
+                     labelId="demo-simple-select-label"
+                     id="demo-simple-select"
+                     name="utype"
+                     value={item.utype}
+                     onChange={this.handleChange}
+                   >
+                     <MenuItem value={"admin"}>ADMIN</MenuItem>
+                     <MenuItem value={"employee"}>EMPLOYEE</MenuItem>
+                     
+                   </Select>
+                     <Divider/>
               <InputLabel htmlFor="component-simple">Email</InputLabel>
-               <Input required id="standard-required" placeholder="Email" name="email" onChange={this.handleChange} value={item.email} />
+               <Input required id="standard-required" placeholder="Email" type="email" name="email" onChange={this.handleChange} value={item.email} />
                <InputLabel htmlFor="component-simple">Password</InputLabel>
                <Input required id="standard-required" placeholder="Password" name="password" autoComplete="off" type="password" onChange={this.handleChange} value={item.password} />
                <Divider/>  

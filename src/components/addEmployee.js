@@ -54,6 +54,7 @@ class AddEmployee extends Component {
      app.auth().createUserWithEmailAndPassword(item.email,item.password).then(cred => {
       //console.log(cred.user.uid);
       var useruId = cred.user.uid;
+      //get the user  ID created
       logUser(useruId); 
        
  
@@ -140,7 +141,7 @@ function logUser(useruId) {
             />
              <Divider/>
               
-              <Input className="inputDatas" required id="standard-required" placeholder="Contact No." name="cpnum" onChange={this.handleChange} value={this.state.cpnum} />
+              <Input className="inputDatas" required id="standard-required" type="number" placeholder="Contact No." name="cpnum" onChange={this.handleChange} value={this.state.cpnum} />
   
               <Input className="inputDatas" required id="standard-required" placeholder="Address" name="address" onChange={this.handleChange} value={this.state.address} />
                <Divider/>
@@ -162,7 +163,7 @@ function logUser(useruId) {
                <h4>User Credentials</h4>
               
                
-               <Input className="inputDatas" required id="standard-required" autoComplete="off" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} />
+               <Input className="inputDatas" required id="standard-required" type="email" autoComplete="off" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} />
               
                
                <Input className="inputDatas" required id="standard-required" placeholder="Password" label="Password" name="password" type="password" onChange={this.handleChange} value={this.state.password} />
