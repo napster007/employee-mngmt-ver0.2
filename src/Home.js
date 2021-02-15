@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card_cont: {
     height:"10%",
-    width:"30%",
+    width:"40%",
     margin:"0 auto",
 
   },
@@ -72,7 +72,7 @@ export default function SelectedListItem() {
     setSelectedIndex(index);
   };
 
-  const bull = <span className={classes.bullet}>•</span>;
+  
   return (
     <div className={classes.root}>
         <AppBar position="static" component="nav">
@@ -168,7 +168,7 @@ export default function SelectedListItem() {
         <hr />
         <Card className={classes.card_cont} variant="outlined">
           <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
+            <Typography className={classes.title} color="textPrimary" gutterBottom>
             Welcome and Happy holidays
             </Typography>
             
@@ -189,7 +189,7 @@ export default function SelectedListItem() {
           of them to render at a time
         */}
         <Switch>
-          <Route path="/employee-list" component={EmployeeList}>
+          <Route exact path="/employee-list" component={EmployeeList}>
             <EmployeeList />
           </Route>
           <Route path="/add-employee" exact component={AddEmployee}>

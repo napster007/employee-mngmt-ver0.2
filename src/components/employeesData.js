@@ -162,7 +162,7 @@ class EmployeesData extends Component {
                      
                    </Select>
                      <Divider/>
-              <InputLabel htmlFor="component-simple">Email</InputLabel>
+                <InputLabel htmlFor="component-simple">Email</InputLabel>
                <Input required id="standard-required" placeholder="Email" type="email" name="email" onChange={this.handleChange} value={item.email} />
                <InputLabel htmlFor="component-simple">Password</InputLabel>
                <Input required id="standard-required" placeholder="Password" name="password" autoComplete="off" type="password" onChange={this.handleChange} value={item.password} />
